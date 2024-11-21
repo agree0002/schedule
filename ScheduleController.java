@@ -1,30 +1,33 @@
 package project.planner.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import project.planner.domain.Schedule;
+import project.planner.repository.ScheduleRepository;
+import project.planner.service.ScheduleService;
 
 import java.util.List;
 
+@Controller
 public class ScheduleController {
 
     private final ScheduleService scheduleService;
     private final ScheduleRepository scheduleRepository;
 
-    @Autowired
-    public ScheduleController(ScheduleService scheduleService) {
+    public ScheduleController(ScheduleService scheduleService, ScheduleRepository scheduleRepository) {
         this.scheduleService = scheduleService;
         this.scheduleRepository = scheduleRepository;
     }
 
-    @GetMapping("/schedules/new")
+    @GetMapping(value = "/schedules/new")
     public String createFrom() {
         return "schedules/createScheduleForm";
     }
 
-    @PostMapping
+    @PostMapping(value = "/schedules/new")
     public String create(ScheduleForm form) {
         Schedule schedule = new Schedule();
         schedule.setDate(form.getDate());
@@ -35,8 +38,8 @@ public class ScheduleController {
 
     @GetMapping("/schedules")
     public String list(Model model) {
-        List<Schedule> schedules = scheduleService.findById();
+        List<Schedule> schedules = scheduleService.findSchedule(1);
         model.addAttribute("schedules", schedules);
-        return "schedules/schduleList";
+        return "schedules/scheduleList";
     }
 }
