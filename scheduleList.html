@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>date</th>
+                <th>task</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="schedule : ${schedules}">
+                <td th:text="${schedule.date}"></td>
+                <td th:text="${schedule.task}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
