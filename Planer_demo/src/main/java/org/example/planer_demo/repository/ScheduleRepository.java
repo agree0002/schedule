@@ -10,4 +10,5 @@ public interface ScheduleRepository {
     long delete (int schedule_index);
     Schedule update(Schedule schedule);
     List<Schedule> findByIdx(int user_index);
+    List<Schedule> findAll();
 }

@@ -20,12 +20,20 @@ public class ScheduleService {
         return schedule.getSchedule_index();
     }
 
-    /*public long deleteSchedule() {
+    public long deleteSchedule(int schedule_index) {
+        return scheduleRepository.delete(schedule_index);
+    }
 
+    /*public List<Schedule> findSchedule() {
+        return scheduleRepository.findByIdx();
     }*/
 
     public List<Schedule> findSchedule(int user_index) {
         return scheduleRepository.findByIdx(user_index);
+    }
+
+    public List<Schedule> findAllSchedule() {
+        return scheduleRepository.findAll();
     }
 
 }

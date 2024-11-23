@@ -22,7 +22,16 @@ public class JpaScheduleRepository implements ScheduleRepository{
 
     @Override
     public long delete(int schedule_index) {
-        return 0;
+        // 먼저 schedule_index에 해당하는 엔티티 조회
+        Schedule schedule = em.find(Schedule.class, schedule_index);
+
+        if (schedule != null) {
+            // 엔티티 삭제
+            em.remove(schedule);
+            return schedule_index; // 삭제된 schedule_index 반환
+        } else {
+            return 0; // 삭제 대상이 없으면 0 반환
+        }
     }
 
     @Override
@@ -32,8 +41,14 @@ public class JpaScheduleRepository implements ScheduleRepository{
 
     @Override
     public List<Schedule> findByIdx(int user_index) {
-        return em.createQuery("select m from schedule m where m.userIndex= :user_index", Schedule.class)
-                .setParameter("userIndex", user_index)
+        return em.createQuery("select m from Schedule m where m.user_index= :user_index", Schedule.class)
+                .setParameter("user_index", user_index)
+                .getResultList();
+    }
+
+    @Override
+    public List<Schedule> findAll() {
+        return em.createQuery("select m from Schedule m", Schedule.class)
                 .getResultList();
     }
 }

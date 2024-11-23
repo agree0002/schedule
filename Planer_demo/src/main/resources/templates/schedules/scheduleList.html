@@ -6,12 +6,16 @@
     <table>
       <thead>
       <tr>
+        <th>schedule_index</th>
+        <th>user_index</th>
         <th>date</th>
         <th>task</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="schedule : ${schedules}">
+        <td th:text="${schedule.schedule_index}"></td>
+        <td th:text="${schedule.user_index}"></td>
         <td th:text="${schedule.date}"></td>
         <td th:text="${schedule.task}"></td>
       </tr>
