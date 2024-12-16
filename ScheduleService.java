@@ -1,11 +1,14 @@
-package org.example.planer_demo.service;
+package project.planner.service;
 
-import org.example.planer_demo.domain.Schedule;
-import org.example.planer_demo.repository.ScheduleRepository;
-import org.springframework.transaction.annotation.Transactional;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import project.planner.domain.Schedule;
+import project.planner.repository.ScheduleRepository;
 
 import java.util.List;
-import java.util.Optional;
+
+
+
 
 @Transactional
 public class ScheduleService {
@@ -15,17 +18,20 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
+
     public int enterSchedule(Schedule schedule) {
-        scheduleRepository.insert(schedule);
-        return schedule.getSchedule_index();
+    scheduleRepository.insert(schedule);
+    return schedule.getSchedule_index();
+}
+
+    public long deleteSchedule(int schedule_index) {
+        return scheduleRepository.delete(schedule_index);
     }
-
-    /*public long deleteSchedule() {
-
-    }*/
 
     public List<Schedule> findSchedule(int user_index) {
         return scheduleRepository.findByIdx(user_index);
     }
+
+
 
 }
