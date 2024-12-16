@@ -1,9 +1,8 @@
-package org.example.planer_demo.repository;
+package project.planner.repository;
 
-import org.example.planer_demo.domain.Schedule;
+import project.planner.domain.Schedule;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ScheduleRepository {
     Schedule insert (Schedule schedule);

@@ -1,12 +1,11 @@
-package org.example.planer_demo;
+package project.planner;
 
 import jakarta.persistence.EntityManager;
-import org.example.planer_demo.repository.JpaScheduleRepository;
-import org.example.planer_demo.repository.ScheduleRepository;
-import org.example.planer_demo.service.ScheduleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import project.planner.repository.JpaScheduleRepository;
+import project.planner.repository.ScheduleRepository;
+import project.planner.service.ScheduleService;
 
 import javax.sql.DataSource;
 
